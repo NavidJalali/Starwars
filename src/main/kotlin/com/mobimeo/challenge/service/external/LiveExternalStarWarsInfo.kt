@@ -57,7 +57,6 @@ final class LiveExternalStarWarsInfo(
             .uri(url)
             .responseSingle() {
                 response, body ->
-                println(response.status().code())
                 if (response.status().code() == 200) {
                     body.map { it.toString(Charsets.UTF_8) }
                 } else if (response.status().code() == 404) {

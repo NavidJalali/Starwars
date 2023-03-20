@@ -19,10 +19,6 @@ final class LiveStarWars(
 
     override fun getCustomerWithAssets(externalId: Long): Mono<CustomerWithAssets> {
         return repository.getCustomerWithAssets(externalId)
-            .flatMap {
-                println("BOOGER")
-                Mono.just(it)
-            }
             .switchIfEmpty {
                 externalStarWarsInfo
                     .getCustomerWithAssets(externalId)
